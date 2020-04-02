@@ -46,7 +46,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     set(CMAKE_CXX_FLAGS "--system-header-prefix=llvm --system-header-prefix=clang ${CMAKE_CXX_FLAGS}")
 endif()
 
-find_package(LLVM 9.0 REQUIRED)
+find_package(LLVM 10.0 REQUIRED)
 find_package(Clang REQUIRED)
 set(LLVM_PACKAGE_VERSION "${LLVM_VERSION_MAJOR}.${LLVM_VERSION_MINOR}.${LLVM_VERSION_PATCH}")
 message(STATUS "Found LLVM ${LLVM_PACKAGE_VERSION}")

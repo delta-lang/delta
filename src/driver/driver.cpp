@@ -146,8 +146,7 @@ static void addPredefinedImportSearchPaths(llvm::ArrayRef<std::string> inputFile
     addHeaderSearchPathsFromCCompilerOutput();
 }
 
-static void emitMachineCode(llvm::Module& module, llvm::StringRef fileName, llvm::TargetMachine::CodeGenFileType fileType,
-                            llvm::Reloc::Model relocModel) {
+static void emitMachineCode(llvm::Module& module, llvm::StringRef fileName, llvm::CodeGenFileType fileType, llvm::Reloc::Model relocModel) {
     llvm::InitializeNativeTarget();
     llvm::InitializeNativeTargetAsmPrinter();
     llvm::InitializeNativeTargetAsmParser();
@@ -254,7 +253,7 @@ static int buildExecutable(llvm::ArrayRef<std::string> files, const PackageManif
         ABORT(error.message());
     }
 
-    auto fileType = emitAssembly ? llvm::TargetMachine::CGFT_AssemblyFile : llvm::TargetMachine::CGFT_ObjectFile;
+    auto fileType = emitAssembly ? llvm::CGFT_AssemblyFile : llvm::CGFT_ObjectFile;
     if (msvc) emitPositionIndependentCode = true;
     auto relocModel = emitPositionIndependentCode ? llvm::Reloc::Model::PIC_ : llvm::Reloc::Model::Static;
     emitMachineCode(linkedModule, temporaryOutputFilePath, fileType, relocModel);

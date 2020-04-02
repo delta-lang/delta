@@ -10,6 +10,7 @@
 #include <clang/AST/DeclGroup.h>
 #include <clang/AST/PrettyPrinter.h>
 #include <clang/AST/Type.h>
+#include <clang/Basic/Builtins.h>
 #include <clang/Basic/TargetInfo.h>
 #include <clang/Frontend/CompilerInstance.h>
 #include <clang/Lex/HeaderSearch.h>
@@ -327,7 +328,7 @@ bool delta::importCHeader(SourceFile& importer, llvm::StringRef headerName, cons
     clang::CompilerInstance ci;
     ci.createDiagnostics();
     auto args = map(options.cflags, [](auto& cflag) { return cflag.c_str(); });
-    clang::CompilerInvocation::CreateFromArgs(ci.getInvocation(), &*args.begin(), &*args.end(), ci.getDiagnostics());
+    clang::CompilerInvocation::CreateFromArgs(ci.getInvocation(), args, ci.getDiagnostics());
 
     std::shared_ptr<clang::TargetOptions> pto = std::make_shared<clang::TargetOptions>();
     pto->Triple = llvm::sys::getDefaultTargetTriple();
@@ -348,20 +349,20 @@ bool delta::importCHeader(SourceFile& importer, llvm::StringRef headerName, cons
     auto& pp = ci.getPreprocessor();
     pp.getBuiltinInfo().initializeBuiltins(pp.getIdentifierTable(), pp.getLangOpts());
 
-    ci.setASTConsumer(llvm::make_unique<CToDeltaConverter>(*module));
+    ci.setASTConsumer(std::make_unique<CToDeltaConverter>(*module));
     ci.createASTContext();
     ci.createSema(clang::TU_Complete, nullptr);
-    pp.addPPCallbacks(llvm::make_unique<MacroImporter>(*module, ci.getSema()));
+    pp.addPPCallbacks(std::make_unique<MacroImporter>(*module, ci.getSema()));
 
     const clang::DirectoryLookup* curDir = nullptr;
-    auto* fileEntry = ci.getPreprocessor().getHeaderSearchInfo().LookupFile(headerName, {}, false, nullptr, curDir, {}, nullptr, nullptr,
-                                                                            nullptr, nullptr, nullptr, nullptr);
+    auto fileEntry = ci.getPreprocessor().getHeaderSearchInfo().LookupFile(headerName, {}, false, nullptr, curDir, {}, nullptr, nullptr,
+                                                                           nullptr, nullptr, nullptr, nullptr);
     if (!fileEntry) {
         REPORT_ERROR(importLocation, "couldn't find C header file '" << headerName << "'");
         return false;
     }
 
-    auto fileID = ci.getSourceManager().createFileID(fileEntry, clang::SourceLocation(), clang::SrcMgr::C_System);
+    auto fileID = ci.getSourceManager().createFileID(*fileEntry, clang::SourceLocation(), clang::SrcMgr::C_System);
     ci.getSourceManager().setMainFileID(fileID);
     ci.getDiagnosticClient().BeginSourceFile(ci.getLangOpts(), &ci.getPreprocessor());
     clang::ParseAST(ci.getPreprocessor(), &ci.getASTConsumer(), ci.getASTContext());
