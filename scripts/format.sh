@@ -4,7 +4,7 @@ set -o pipefail
 
 ROOTDIR=$(cd "$(dirname "$0")/.."; pwd)
 FILES=$(echo $ROOTDIR/src/**/*.{h,cpp})
-CLANG_TOOLS_VERSION=11
+CLANG_TOOLS_VERSION=12
 
 while test $# -gt 0; do
     case "$1" in
