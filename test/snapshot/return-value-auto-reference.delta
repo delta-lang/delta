@@ -2,7 +2,7 @@
 
 var i = 42;
 
-int* foo() {
+int& foo() {
     var a = A([false,true]).ff();
     var b = B('a').gg();
     return i;
@@ -11,7 +11,7 @@ int* foo() {
 struct A {
     bool[2] b;
 
-    bool* ff() {
+    bool& ff() {
         return b[1];
     }
 }
@@ -19,7 +19,7 @@ struct A {
 struct B: Copyable {
     char a;
 
-    char* gg() {
+    char& gg() {
         return a;
     }
 }

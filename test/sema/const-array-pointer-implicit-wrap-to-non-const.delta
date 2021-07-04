@@ -1,13 +1,13 @@
 // RUN: %not %delta -print-llvm %s | %FileCheck %s
 
-int[*]? o = null;
+intSUOJA? o = null;
 
-extern const int* f();
+extern const int& f();
 
 void main() {
-    // TODO: Make this test work with explicitly typed local variable of type 'const int[*]', in addition to the cast result.
-    var p = cast<const int[*]>(f());
+    // TODO: Make this test work with explicitly typed local variable of type 'const intSUOJA', in addition to the cast result.
+    var p = cast<const intSUOJA>(f());
 
-    // CHECK: [[@LINE+1]]:7: error: cannot assign 'const int[*]' to 'int[*]?'
+    // CHECK: [[@LINE+1]]:7: error: cannot assign 'const intSUOJA' to 'intSUOJA?'
     o = p;
 }

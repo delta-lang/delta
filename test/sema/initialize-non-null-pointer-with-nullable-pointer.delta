@@ -1,8 +1,8 @@
 // RUN: %not %delta -typecheck %s | %FileCheck %s
 
-extern int*? foo();
+extern int&? foo();
 
 void main() {
-    // CHECK: [[@LINE+1]]:17: error: cannot assign 'int*?' to 'int*'
-    int* f = foo(); // TODO: Implicitly unwrap with warning
+    // CHECK: [[@LINE+1]]:17: error: cannot assign 'int&?' to 'int&'
+    int& f = foo(); // TODO: Implicitly unwrap with warning
 }

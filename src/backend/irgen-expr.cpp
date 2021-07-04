@@ -137,7 +137,7 @@ Value* IRGenerator::emitUnaryExpr(const UnaryExpr& expr) {
             }
             return operand;
         }
-        case Token::And:
+        case Token::Ref:
             return emitExprAsPointer(expr.getOperand());
         case Token::Not:
             // FIXME: Temporary hack. Lower implicit null checks such as `if (ptr)` and `if (!ptr)` when expression lowering is implemented.

@@ -1,6 +1,6 @@
 // RUN: %not %delta -typecheck %s | %FileCheck %s
 
-void f(const void* v) {
-    // CHECK: [[@LINE+1]]:13: error: illegal cast from 'const void*' to 'int*'
-    var p = cast<int*>(v);
+void f(const void& v) {
+    // CHECK: [[@LINE+1]]:13: error: illegal cast from 'const void&' to 'int&'
+    var p = cast<int&>(v);
 }

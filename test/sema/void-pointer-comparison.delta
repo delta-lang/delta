@@ -1,6 +1,6 @@
 // RUN: %not %delta -typecheck %s | %FileCheck %s
 
-void f(void* a, void* b) {
-	// CHECK: [[@LINE+1]]:11: error: no matching operator '==' with arguments 'void*' and 'void*'
+void f(void& a, void& b) {
+	// CHECK: [[@LINE+1]]:11: error: no matching operator '==' with arguments 'void&' and 'void&'
     _ = a == b;
 }

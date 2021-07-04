@@ -1,11 +1,11 @@
 // RUN: check-snapshots
 
 interface Interface {
-    This* that;
+    This& that;
 
-    This* foo(This* a);
+    This& foo(This& a);
 
-    This* bar() {
+    This& bar() {
         return foo(foo(this));
     }
 }
@@ -13,7 +13,7 @@ interface Interface {
 struct S: Interface {
     S() { that = this; }
 
-    S* foo(S* a) {
+    S& foo(S& a) {
         return this;
     }
 }
@@ -24,6 +24,6 @@ void main() {
     f(a.foo(b));
 }
 
-void f<T: Interface>(T* a) {
+void f<T: Interface>(T& a) {
     a.foo(a.bar());
 }

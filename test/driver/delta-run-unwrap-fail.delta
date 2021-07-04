@@ -1,7 +1,7 @@
 // RUN: %not %delta run %s 2>&1 | %FileCheck -match-full-lines %s
 
 void main() {
-    int*? p = null;
+    int&? p = null;
     // CHECK: Unwrap failed at delta-run-unwrap-fail.delta:[[@LINE+1]]:15
     var pp = p!;
 }

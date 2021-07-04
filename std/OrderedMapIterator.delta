@@ -1,8 +1,8 @@
-struct OrderedMapIterator<Key, Value>: Copyable, Iterator<MapEntry<Key, Value>*> {
-    AVLnode<Key, Value>*? current;
-    OrderedMap<Key, Value>* map;
+struct OrderedMapIterator<Key, Value>: Copyable, Iterator<MapEntry<Key, Value>&> {
+    AVLnode<Key, Value>&? current;
+    OrderedMap<Key, Value>& map;
 
-    OrderedMapIterator(OrderedMap<Key, Value>* map) {
+    OrderedMapIterator(OrderedMap<Key, Value>& map) {
         current = map.firstNode();
         this.map = map;
     }
@@ -11,7 +11,7 @@ struct OrderedMapIterator<Key, Value>: Copyable, Iterator<MapEntry<Key, Value>*>
         return current != null;
     }
 
-    MapEntry<Key, Value>* value() {
+    MapEntry<Key, Value>& value() {
         return current!.entry;
     }
 

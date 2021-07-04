@@ -11,6 +11,6 @@ E f(S s) {
     return s.f;
 }
 
-E g(S* s) {
+E g(S& s) {
     return s.f;
 }

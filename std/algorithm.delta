@@ -1,7 +1,7 @@
 /// Public members
 
 /// Gives the maximum of the two elements
-T* max<T>(T* a, T* b) {
+T& max<T>(T& a, T& b) {
     if (a >= b) {
         return a;
     }
@@ -9,7 +9,7 @@ T* max<T>(T* a, T* b) {
 }
 
 /// Gives the minimum of the two elements
-T* min<T>(T* a, T* b) {
+T& min<T>(T& a, T& b) {
     if (a < b) {
         return a;
     }
@@ -17,7 +17,7 @@ T* min<T>(T* a, T* b) {
 }
 
 /// Swaps two items in place
-void swap<E>(E* a, E* b) {
+void swap<E>(E& a, E& b) {
     var t = *a;
     *a = *b;
     *b = t;
@@ -25,7 +25,7 @@ void swap<E>(E* a, E* b) {
 
 // TODO: Use ArrayRef instead of List.
 /// Sorts a array. Uses insertion sort if the array is small enough, and quickSort otherwise.
-void sort<E: Comparable>(List<E>* array)  {
+void sort<E: Comparable>(List<E>& array)  {
     if (array.size() <= 32) {
         insertionSort(array);
     } else {
@@ -36,7 +36,7 @@ void sort<E: Comparable>(List<E>* array)  {
 /// Private members
 
 // TODO: Use ArrayRef instead of List.
-private int partition<E: Comparable>(List<E>* arr, int low, int high) {
+private int partition<E: Comparable>(List<E>& arr, int low, int high) {
     var pivot = arr[high];
     var i = low - 1;
 
@@ -54,7 +54,7 @@ private int partition<E: Comparable>(List<E>* arr, int low, int high) {
 
 // TODO: Use ArrayRef instead of List.
 /// Quicksorts the given array, in place. Not stable.
-private void quickSort<E: Comparable>(List<E>* arr, int low, int high) {
+private void quickSort<E: Comparable>(List<E>& arr, int low, int high) {
     if (low < high) {
         var index = partition(arr, low, high);
 
@@ -69,7 +69,7 @@ private void quickSort<E: Comparable>(List<E>* arr, int low, int high) {
 
 // TODO: Use ArrayRef instead of List.
 /// Insertion sorts the given array, in place. Good for small arrays.
-private void insertionSort<E: Comparable>(List<E>* arr) {
+private void insertionSort<E: Comparable>(List<E>& arr) {
     var i = 1;
     while (i < arr.size()) {
         var j = i;

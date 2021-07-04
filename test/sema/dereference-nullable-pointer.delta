@@ -5,7 +5,7 @@ struct Foo: Copyable {
 }
 
 void main() {
-    Foo*? p = null;
+    Foo&? p = null;
     // CHECK: [[@LINE+1]]:9: warning: dereferenced pointer may be null; unwrap it with a postfix '!' to silence this warning
     _ = *p;
 }

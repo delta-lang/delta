@@ -13,34 +13,34 @@ struct OrderedSet<Element> {
     }
 
     /// Returns true if the Set contains `e`, otherwise false.
-    bool contains(Element* e) {
+    bool contains(Element& e) {
         return map.contains(e);
     }
 
     /// Removes an element from the Set, if it exists.
-    void remove(Element* e) {
+    void remove(Element& e) {
         map.remove(e);
     }
 
     /// Returns the value immediately lower than `e`, or `null` if
     /// `e` is the smallest element in the Set.
-    Element*? lower(Element* e) {
+    Element&? lower(Element& e) {
         return map.lowerKey(e);
     }
 
     /// Returns the value immediately higher than `e`, or `null` if
     /// `e` is the largest element in the Set.
-    Element*? higher(Element* e) {
+    Element&? higher(Element& e) {
         return map.higherKey(e);
     }
 
     /// Returns the smallest element in the Set, or `null` if the Set is empty.
-    Element*? first() {
+    Element&? first() {
         return map.first();
     }
 
     /// Returns the largest element in the Set, or `null` if the Set is empty.
-    Element*? last() {
+    Element&? last() {
         return map.last();
     }
 

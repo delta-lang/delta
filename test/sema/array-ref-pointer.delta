@@ -2,4 +2,4 @@
 
 // TODO: Error location column should be at asterisk.
 // CHECK: [[@LINE+1]]:10: error: pointer to array reference is not yet implemented
-void foo(int[]* a) {}
+void foo(int[]& a) {}

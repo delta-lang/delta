@@ -3,6 +3,6 @@
 int foo() { return 42; }
 
 void main() {
-    // CHECK: [[@LINE+1]]:17: error: cannot assign 'int' to 'int*'
-    int* p = foo();
+    // CHECK: [[@LINE+1]]:17: error: cannot assign 'int' to 'int&'
+    int& p = foo();
 }

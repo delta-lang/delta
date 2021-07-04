@@ -4,7 +4,7 @@ struct Foo: Copyable {
     int a
 }
 
-void bar(const Foo* foo) {
+void bar(const Foo& foo) {
     // CHECK: [[@LINE+1]]:11: error: cannot assign to immutable variable 'a' of type 'const int'
     foo.a = 42
 }

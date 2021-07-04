@@ -2,7 +2,7 @@
 
 struct A {
     int i;
-    int* j;
+    int& j;
 
     // CHECK: [[@LINE+2]]:5: warning: constructor doesn't initialize member variable 'i'
     // CHECK: [[@LINE+1]]:5: warning: constructor doesn't initialize member variable 'j'

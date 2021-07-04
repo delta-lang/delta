@@ -18,7 +18,7 @@ struct StringBuffer: Comparable, Hashable, Printable {
     }
 
     /// Initializes a string with the characters from a character array of known length.
-    StringBuffer(char[*] pointer, int length) {
+    StringBuffer(charSUOJA pointer, int length) {
         init(string(pointer, length));
     }
 
@@ -26,9 +26,9 @@ struct StringBuffer: Comparable, Hashable, Printable {
     ///
     /// __Note:__ This constructor has a time complexity of O(n) because it has to calculate the
     /// length of the argument string. If you know the length beforehand, consider using
-    /// `StringBuffer(char* pointer, int length)` instead.
+    /// `StringBuffer(char& pointer, int length)` instead.
     ///
-    StringBuffer(char[*] cString) {
+    StringBuffer(charSUOJA cString) {
         init(string(cString, int(strlen(cString))));
     }
 
@@ -54,12 +54,12 @@ struct StringBuffer: Comparable, Hashable, Printable {
 
     /// Returns the string as a C-style, i.e. null-terminated, string.
     /// Modifying `this` after calling this function invalidates the returned pointer.
-    char[*] cString() {
+    charSUOJA cString() {
         return data();
     }
 
     /// Returns a pointer to the first character in the string.
-    char[*] data() {
+    charSUOJA data() {
         return characters.data();
     }
 
@@ -172,11 +172,11 @@ struct StringBuffer: Comparable, Hashable, Printable {
         return string(this).escape();
     }
 
-    void print(StringBuffer* stream) {
+    void print(StringBuffer& stream) {
         stream.write(string(this));
     }
 
-    Ordering compare(StringBuffer* other) {
+    Ordering compare(StringBuffer& other) {
         return string(this).compare(string(other));
     }
 
@@ -203,7 +203,7 @@ StringBuffer operator+(string a, char b) {
     return a + string(&b, 1);
 }
 
-StringBuffer operator+(string a, char[*] b) {
+StringBuffer operator+(string a, charSUOJA b) {
     return a + string(b);
 }
 
@@ -223,42 +223,42 @@ StringBuffer operator+(StringBuffer a, char b) {
     return result;
 }
 
-StringBuffer operator+(StringBuffer a, char[*] b) {
+StringBuffer operator+(StringBuffer a, charSUOJA b) {
     return a + string(b);
 }
 
-bool operator==(StringBuffer* a, StringBuffer* b) {
+bool operator==(StringBuffer& a, StringBuffer& b) {
     return string(a) == string(b);
 }
 
-bool operator==(StringBuffer* a, string b) {
+bool operator==(StringBuffer& a, string b) {
     return string(a) == b;
 }
 
-bool operator!=(StringBuffer* a, string b) {
+bool operator!=(StringBuffer& a, string b) {
     return string(a) != b;
 }
 
-bool operator==(string a, StringBuffer* b) {
+bool operator==(string a, StringBuffer& b) {
     return a == string(b);
 }
 
-bool operator!=(string a, StringBuffer* b) {
+bool operator!=(string a, StringBuffer& b) {
     return a != string(b);
 }
 
-bool operator==(char[*] a, StringBuffer* b) {
+bool operator==(charSUOJA a, StringBuffer& b) {
     return string(a) == string(b);
 }
 
-bool operator!=(char[*] a, StringBuffer* b) {
+bool operator!=(charSUOJA a, StringBuffer& b) {
     return string(a) != string(b);
 }
 
-bool operator==(StringBuffer* a, char[*] b) {
+bool operator==(StringBuffer& a, charSUOJA b) {
     return string(a) == string(b);
 }
 
-bool operator!=(StringBuffer* a, char[*] b) {
+bool operator!=(StringBuffer& a, charSUOJA b) {
     return string(a) != string(b);
 }

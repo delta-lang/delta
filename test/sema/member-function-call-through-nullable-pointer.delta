@@ -6,7 +6,7 @@ struct Foo: Copyable {
 }
 
 void main() {
-    Foo*? f = null;
+    Foo&? f = null;
     // CHECK: [[@LINE+1]]:5: warning: receiver may be null; unwrap it with a postfix '!' to silence this warning
     f.bar();
 }

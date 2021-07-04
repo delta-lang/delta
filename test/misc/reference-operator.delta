@@ -1,7 +1,7 @@
 // RUN: %delta run %s | %FileCheck -match-full-lines -strict-whitespace %s
 // CHECK:Bar
 
-extern int puts(uint8* s);
+extern int puts(uint8& s);
 
 void main() {
     uint8[4] buffer = undefined;

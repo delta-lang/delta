@@ -1,9 +1,9 @@
 // RUN: %delta -typecheck %s -Wno-unused | %FileCheck %s
 
-extern int*? bar();
+extern int&? bar();
 
-void foo(int*? a) {
-    int*? p = a;
+void foo(int&? a) {
+    int&? p = a;
 
     if (p == null) {
         return;

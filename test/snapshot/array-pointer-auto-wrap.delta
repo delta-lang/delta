@@ -1,6 +1,6 @@
 // RUN: check-snapshots
 
 void main() {
-    int[*] p = undefined;
-    int[*]? o = p;
+    intSUOJA p = undefined;
+    intSUOJA? o = p;
 }

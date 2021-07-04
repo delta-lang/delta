@@ -1,6 +1,6 @@
 // RUN: check-snapshots
 
-void f<T>(T* p) {}
+void f<T>(T& p) {}
 
 void main() {
     var i = 42;

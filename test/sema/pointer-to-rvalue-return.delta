@@ -1,4 +1,4 @@
 // RUN: %not %delta -typecheck %s -Wno-unused | %FileCheck %s
 
-// CHECK: [[@LINE+1]]:14: error: mismatching return type 'int', expected 'int*'
-int* foo() { return 42; }
+// CHECK: [[@LINE+1]]:14: error: mismatching return type 'int', expected 'int&'
+int& foo() { return 42; }

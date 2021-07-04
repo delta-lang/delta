@@ -2,5 +2,5 @@
 
 interface I {
     void i();
-    int* j();
+    int& j();
 }

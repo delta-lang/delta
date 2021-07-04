@@ -1,5 +1,5 @@
 // RUN: check-snapshots -Wno-unused
 
-void f(int* foo, int bar) {
+void f(int& foo, int bar) {
     _ = foo < bar;
 }

@@ -1,9 +1,9 @@
 // RUN: %not %delta -typecheck %s | %FileCheck %s
 
-extern void*? f();
+extern void&? f();
 
 void main() {
-    var p = cast<uint8*?>(f());
-    // CHECK: [[@LINE+1]]:6: error: 'uint8*?' doesn't provide an index operator
+    var p = cast<uint8&?>(f());
+    // CHECK: [[@LINE+1]]:6: error: 'uint8&?' doesn't provide an index operator
     p[0] = 64;
 }

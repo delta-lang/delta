@@ -2,7 +2,7 @@
 
 struct X {}
 
-void fx(X* a, X* b) {
+void fx(X& a, X& b) {
     // CHECK: [[@LINE+1]]:11: error: type 'X' doesn't implement interface 'Comparable'
     _ = a < b;
 }

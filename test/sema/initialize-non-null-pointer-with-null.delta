@@ -1,6 +1,6 @@
 // RUN: %not %delta -typecheck %s | %FileCheck %s
 
 void main() {
-    // CHECK: [[@LINE+1]]:14: error: cannot assign 'null' to 'int*' (add '?' to the type to make it nullable)
-    int* p = null;
+    // CHECK: [[@LINE+1]]:14: error: cannot assign 'null' to 'int&' (add '?' to the type to make it nullable)
+    int& p = null;
 }

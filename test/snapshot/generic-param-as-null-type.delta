@@ -1,7 +1,7 @@
 // RUN: check-snapshots
 
 struct S<T>: Copyable {
-    T*? p
+    T&? p
 
     S() {
         p = null

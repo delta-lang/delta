@@ -3,7 +3,7 @@
 struct A: Printable {
     string a;
 
-    void print(StringBuffer* stream) {
+    void print(StringBuffer& stream) {
         stream.write(a);
         stream.write(a);
         stream.write("!");

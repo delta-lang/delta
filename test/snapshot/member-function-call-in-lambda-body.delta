@@ -7,5 +7,5 @@ struct X {
 }
 
 void main() {
-    var lambda = (X* x) -> x.foo();
+    var lambda = (X& x) -> x.foo();
 }

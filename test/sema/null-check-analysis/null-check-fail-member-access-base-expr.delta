@@ -1,7 +1,7 @@
 // RUN: %delta -typecheck %s -Wno-unused | %FileCheck %s
 
 struct S {
-    S*? i;
+    S&? i;
 
     void f() {
         // CHECK: [[@LINE+1]]:17: warning: value may be null; unwrap it with a postfix '!' to silence this warning

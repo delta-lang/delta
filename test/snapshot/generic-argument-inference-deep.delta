@@ -12,6 +12,6 @@ void f(S<int> c, S<int> d) {
     _ = c == d;
 }
 
-void f(S<bool>*  c, S<bool>*  d) {
+void f(S<bool>&  c, S<bool>&  d) {
     _ = *c == *d;
 }

@@ -3,6 +3,6 @@
 void main() {
     var i = 42;
     var p = &i;
-    // CHECK: [[@LINE+1]]:11: error: invalid operands 'int*' and 'null' to '==' (non-optional type 'int*' cannot be null)
+    // CHECK: [[@LINE+1]]:11: error: invalid operands 'int&' and 'null' to '==' (non-optional type 'int&' cannot be null)
     if (p == null) { }
 }

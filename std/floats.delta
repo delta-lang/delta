@@ -1,7 +1,7 @@
 // TODO: Remove code duplication by declaring a 'FloatingPoint' interface that implements the
 // 'compare' function for all floating-point types.
 
-private void printFloat(float64 value, StringBuffer* stream) {
+private void printFloat(float64 value, StringBuffer& stream) {
     // Maximum length from https://stackoverflow.com/a/1701272/3425536
     char[1080] result = undefined;
     sprintf(result, "%g", value);
@@ -9,37 +9,37 @@ private void printFloat(float64 value, StringBuffer* stream) {
 }
 
 struct float: Copyable, Comparable, Printable {
-    Ordering compare(float* other) {
+    Ordering compare(float& other) {
         return this < other ? Ordering.Less : this > other ? Ordering.Greater : Ordering.Equal;
     }
 
-    void print(StringBuffer* stream) {
+    void print(StringBuffer& stream) {
         printFloat(float64(this), stream);
     }
 }
 
 struct float32: Copyable, Comparable, Printable {
-    Ordering compare(float32* other) {
+    Ordering compare(float32& other) {
         return this < other ? Ordering.Less : this > other ? Ordering.Greater : Ordering.Equal;
     }
 
-    void print(StringBuffer* stream) {
+    void print(StringBuffer& stream) {
         printFloat(float64(this), stream);
     }
 }
 
 struct float64: Copyable, Comparable, Printable {
-    Ordering compare(float64* other) {
+    Ordering compare(float64& other) {
         return this < other ? Ordering.Less : this > other ? Ordering.Greater : Ordering.Equal;
     }
 
-    void print(StringBuffer* stream) {
+    void print(StringBuffer& stream) {
         printFloat(this, stream);
     }
 }
 
 struct float80: Copyable, Comparable {
-    Ordering compare(float80* other) {
+    Ordering compare(float80& other) {
         return this < other ? Ordering.Less : this > other ? Ordering.Greater : Ordering.Equal;
     }
 }

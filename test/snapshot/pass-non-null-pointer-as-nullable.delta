@@ -1,6 +1,6 @@
 // RUN: check-snapshots
 
-void foo(int*? p) {}
+void foo(int&? p) {}
 
 void main() {
     var i = 42;

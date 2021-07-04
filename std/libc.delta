@@ -1,40 +1,40 @@
 // stdlib.h
-extern void*? malloc(uint64 size);
-extern void free(void*? ptr);
+extern void&? malloc(uint64 size);
+extern void free(void&? ptr);
 extern never abort();
 extern never exit(int status);
 
 // stdio.h
 struct FILE {}
-extern int printf(const char[*] format, ...);
-extern int fprintf(FILE* stream, const char[*] format, ...);
-extern int sprintf(char[*] str, const char[*] format, ...);
+extern int printf(const charSUOJA format, ...);
+extern int fprintf(FILE& stream, const charSUOJA format, ...);
+extern int sprintf(charSUOJA str, const charSUOJA format, ...);
 extern int getchar();
-extern FILE*? fopen(const char[*] filename, const char[*] mode);
+extern FILE&? fopen(const charSUOJA filename, const charSUOJA mode);
 #if Windows
-extern FILE*? _fdopen(int fd, const char[*] mode);
-FILE*? fdopen(int fd, const char[*] mode) { return _fdopen(fd, mode); }
+extern FILE&? _fdopen(int fd, const charSUOJA mode);
+FILE&? fdopen(int fd, const charSUOJA mode) { return _fdopen(fd, mode); }
 #else
-extern FILE*? fdopen(int fd, const char[*] mode);
+extern FILE&? fdopen(int fd, const charSUOJA mode);
 #endif
-extern int fgetc(FILE* file);
-extern uint64 fread(void* data, uint64 size, uint64 count, FILE* file);
-extern void fwrite(const void* data, uint64 size, uint64 count, FILE* file);
-extern void fseek(FILE* file, int64 offset, int origin);
-extern int64 ftell(FILE* file);
-extern int fclose(FILE* file);
-extern int fflush(FILE* file);
-extern int feof(FILE* file);
-extern int fputc(int c, FILE* file);
-extern int remove(const char[*] filename);
-extern int ungetc(int c, FILE* file);
-extern void rewind(FILE* file);
+extern int fgetc(FILE& file);
+extern uint64 fread(void& data, uint64 size, uint64 count, FILE& file);
+extern void fwrite(const void& data, uint64 size, uint64 count, FILE& file);
+extern void fseek(FILE& file, int64 offset, int origin);
+extern int64 ftell(FILE& file);
+extern int fclose(FILE& file);
+extern int fflush(FILE& file);
+extern int feof(FILE& file);
+extern int fputc(int c, FILE& file);
+extern int remove(const charSUOJA filename);
+extern int ungetc(int c, FILE& file);
+extern void rewind(FILE& file);
 const SEEK_SET = 0;
 const SEEK_CUR = 1;
 const SEEK_END = 2;
 
 // string.h
-extern uint64 strlen(const char[*] str);
+extern uint64 strlen(const charSUOJA str);
 
 // ctype.h
 extern int isalnum(int ch);

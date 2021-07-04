@@ -2,5 +2,5 @@
 
 void main() {
     // CHECK: [[@LINE+1]]:12: warning: missing initializer
-    int*** i;
+    int&&& i;
 }

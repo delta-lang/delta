@@ -47,7 +47,7 @@ struct Asteroid {
         while (position.y >= height) position.y -= height;
     }
 
-    void render(SDL_Renderer* renderer) {
+    void render(SDL_Renderer& renderer) {
         for (var i in -1...1) {
             for (var j in -1...1) {
                 var diff = Vector2(float(i) * width, float(j) * height);

@@ -29,6 +29,6 @@ void f() {
 }
 
 void g() {
-    char*[*]? p = null;
+    char&SUOJA? p = null;
     if (p == null) {}
 }

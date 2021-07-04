@@ -22,7 +22,7 @@ struct S {
     int i;
 }
 
-int f(S* s) {
+int f(S& s) {
     switch s.i {
         case 0: return 0;
         default: return 1;

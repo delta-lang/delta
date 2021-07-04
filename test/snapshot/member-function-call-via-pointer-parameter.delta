@@ -12,7 +12,7 @@ struct Bar: Copyable {
     void bar() { }
 }
 
-void qux(Foo* f, Bar* b) {
+void qux(Foo& f, Bar& b) {
     f.foo();
     b.bar();
 }

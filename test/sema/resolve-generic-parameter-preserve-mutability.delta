@@ -2,7 +2,7 @@
 
 struct S<T>: Copyable {
     void f(T t) {
-        T*? p = null;
+        T&? p = null;
         *p! = t;
     }
 }

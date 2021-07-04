@@ -1,5 +1,5 @@
 // RUN: check-snapshots -Wno-unused
 
-void f(float64* foo, float64 bar, float64 baz) {
+void f(float64& foo, float64 bar, float64 baz) {
     *foo *= 1.0 - bar * baz;
 }

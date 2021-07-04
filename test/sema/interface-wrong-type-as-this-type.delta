@@ -1,18 +1,18 @@
 // RUN: %not %delta -typecheck %s | %FileCheck %s
 
 interface Interface {
-    S* f();
+    S& f();
 
-    This* bar() {
-        // CHECK: [[@LINE+1]]:9: error: mismatching return type 'S*', expected 'Interface*'
+    This& bar() {
+        // CHECK: [[@LINE+1]]:9: error: mismatching return type 'S&', expected 'Interface&'
         return f();
     }
 }
 
 struct S: Interface {
-    S* f() { return this; }
+    S& f() { return this; }
 }
 
-void f(S* s) {
+void f(S& s) {
     s.bar();
 }

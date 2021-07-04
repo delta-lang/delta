@@ -1,7 +1,7 @@
 /// First-in-first-out data structure
 struct Queue<T> {
-    Node<T>*? head;
-    Node<T>*? tail;
+    Node<T>&? head;
+    Node<T>&? tail;
     int size;
 
     /// Initialize an empty Queue
@@ -50,7 +50,7 @@ struct Queue<T> {
     }
 
     /// Access element in the front of the queue
-    T* first() {
+    T& first() {
         return head!.value;
     }
 
@@ -66,7 +66,7 @@ struct Queue<T> {
 }
 
 struct Node<T> {
-    Node<T>*? next;
+    Node<T>&? next;
     T value;
 
     Node(T val) {

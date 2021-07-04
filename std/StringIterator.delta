@@ -1,6 +1,6 @@
 struct StringIterator: Copyable, Iterator<char> {
-    char[*] current;
-    char[*] end;
+    charSUOJA current;
+    charSUOJA end;
 
     StringIterator(string s) {
         current = s.data();

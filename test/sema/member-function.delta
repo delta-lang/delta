@@ -2,5 +2,5 @@
 
 struct Foo {
     int i;
-    void bar() { Foo* f = this; }
+    void bar() { Foo& f = this; }
 }

@@ -1,7 +1,7 @@
 struct string: Copyable, Comparable, Hashable, Printable {
     ArrayRef<char> characters;
 
-    string(char[*] pointer, int length) {
+    string(charSUOJA pointer, int length) {
         characters = ArrayRef(pointer, length);
     }
 
@@ -9,13 +9,13 @@ struct string: Copyable, Comparable, Hashable, Printable {
     ///
     /// __Note:__ This constructor has a time complexity of O(n) because it has to calculate the
     /// length of the argument string. If you know the length beforehand, consider using
-    /// `string(char* pointer, int length)` instead.
+    /// `string(char& pointer, int length)` instead.
     ///
-    string(char[*] cString) {
+    string(charSUOJA cString) {
         characters = ArrayRef(cString, int(strlen(cString)));
     }
 
-    string(StringBuffer* string) {
+    string(StringBuffer& string) {
         characters = ArrayRef(string.data(), string.size());
     }
 
@@ -37,7 +37,7 @@ struct string: Copyable, Comparable, Hashable, Printable {
         return characters[index];
     }
 
-    char[*] data() {
+    charSUOJA data() {
         return characters.data();
     }
 
@@ -144,11 +144,11 @@ struct string: Copyable, Comparable, Hashable, Printable {
         return result;
     }
 
-    void print(StringBuffer* stream) {
+    void print(StringBuffer& stream) {
         stream.write(this);
     }
 
-    Ordering compare(string* other) {
+    Ordering compare(string& other) {
         for (var index in 0..min(size(), other.size())) {
             if (this[index] < other[index]) { return Ordering.Less; }
             if (this[index] > other[index]) { return Ordering.Greater; }
@@ -177,18 +177,18 @@ bool operator==(string a, string b) {
     return true;
 }
 
-bool operator==(char[*] a, string b) {
+bool operator==(charSUOJA a, string b) {
     return string(a) == b;
 }
 
-bool operator!=(char[*] a, string b) {
+bool operator!=(charSUOJA a, string b) {
     return string(a) != b;
 }
 
-bool operator==(string a, char[*] b) {
+bool operator==(string a, charSUOJA b) {
     return a == string(b);
 }
 
-bool operator!=(string a, char[*] b) {
+bool operator!=(string a, charSUOJA b) {
     return a != string(b);
 }

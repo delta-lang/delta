@@ -4,7 +4,7 @@ struct Y {
     ~Y() {}
 }
 
-void f(Y a, Y* b) {
+void f(Y a, Y& b) {
     *b = a;
 }
 

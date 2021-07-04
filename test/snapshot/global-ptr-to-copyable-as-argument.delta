@@ -4,9 +4,9 @@ void main() {
     foo(sp)
 }
 
-S*? sp = null
+S&? sp = null
 
-void foo(S*? p) { }
+void foo(S&? p) { }
 
 struct S: Copyable {
     int i

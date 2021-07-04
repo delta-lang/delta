@@ -1,7 +1,7 @@
 // RUN: check-snapshots
 
 struct S: Copyable {
-    int* a
+    int& a
 
     void foo() {
         var b = a

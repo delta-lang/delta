@@ -10,8 +10,8 @@ void f() {
     }
 }
 
-int*? h() {
+int&? h() {
     return null
 }
 
-void j(int* i) {}
+void j(int& i) {}

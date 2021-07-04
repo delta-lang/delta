@@ -1,6 +1,6 @@
 // RUN: check-snapshots
 
 void main() {
-    uint8[4]* buffer = undefined;
+    uint8[4]& buffer = undefined;
     buffer[1] = 0xFF;
 }

@@ -11,11 +11,11 @@ struct char: Copyable, Comparable, Printable, Hashable {
         return this == ' ' || (this >= char(0x9) && this <= char(0xD));
     }
 
-    Ordering compare(char* other) {
+    Ordering compare(char& other) {
         return int(this).compare(int(other));
     }
 
-    void print(StringBuffer* stream) {
+    void print(StringBuffer& stream) {
         // TODO: Use char overload of 'write' when it's implemented.
         stream.write(string(&this, 1));
     }

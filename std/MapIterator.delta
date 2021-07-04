@@ -1,8 +1,8 @@
-struct MapIterator<Key, Value>: Copyable, Iterator<MapEntry<Key, Value>*> {
+struct MapIterator<Key, Value>: Copyable, Iterator<MapEntry<Key, Value>&> {
     ArrayIterator<List<MapEntry<Key, Value>>> hashTableIterator;
-    MapEntry<Key, Value>[*] current;
+    MapEntry<Key, Value>SUOJA current;
 
-    MapIterator(Map<Key, Value>* map) {
+    MapIterator(Map<Key, Value>& map) {
         hashTableIterator = map.hashTable.iterator();
         current = undefined;
         skipEmptySlots();
@@ -12,7 +12,7 @@ struct MapIterator<Key, Value>: Copyable, Iterator<MapEntry<Key, Value>*> {
         return hashTableIterator.hasValue();
     }
 
-    MapEntry<Key, Value>* value() {
+    MapEntry<Key, Value>& value() {
         return current;
     }
 
@@ -21,8 +21,7 @@ struct MapIterator<Key, Value>: Copyable, Iterator<MapEntry<Key, Value>*> {
         var slotEnd = &slot.data()[slot.size()];
         current++;
 
-        // TODO: Allow comparing T[*] and T* without casts.
-        if (cast<void*>(current) === cast<void*>(slotEnd)) {
+        if (current === slotEnd) {
             hashTableIterator.increment();
             skipEmptySlots();
         }

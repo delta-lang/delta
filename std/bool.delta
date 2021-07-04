@@ -1,9 +1,9 @@
 struct bool: Copyable, Comparable, Printable, Hashable {
-    Ordering compare(bool* other) {
+    Ordering compare(bool& other) {
         return int(this).compare(int(other));
     }
 
-    void print(StringBuffer* stream) {
+    void print(StringBuffer& stream) {
         stream.write(this ? "true" : "false");
     }
 

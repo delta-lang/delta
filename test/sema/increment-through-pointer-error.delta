@@ -1,6 +1,6 @@
 // RUN: %not %delta -typecheck %s | %FileCheck %s
 
-void f(bool* a) {
+void f(bool& a) {
     var p = a;
     // CHECK: [[@LINE+1]]:6: error: cannot increment 'bool'
     p++;

@@ -3,7 +3,7 @@
 struct C: Comparable {
     int a;
 
-    Ordering compare(C* other) {
+    Ordering compare(C& other) {
         return this.a.compare(other.a);
     }
 }

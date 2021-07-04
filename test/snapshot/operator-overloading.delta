@@ -9,7 +9,7 @@ struct vec2: Copyable {
     }
 }
 
-vec2 operator*(vec2 a, vec2 b) {
+vec2 operator&(vec2 a, vec2 b) {
     return vec2(a.x * b.x, a.y * b.y)
 }
 

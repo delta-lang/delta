@@ -343,10 +343,6 @@ int64_t Parser::parseArraySizeInBrackets() {
         case Token::RightBracket:
             arraySize = ArrayType::runtimeSize;
             break;
-        case Token::Star:
-            consumeToken();
-            arraySize = ArrayType::unknownSize;
-            break;
         default:
             ERROR(getCurrentLocation(), "non-literal array bounds not implemented yet");
     }
@@ -409,7 +405,7 @@ Type Parser::parseFunctionType(Type returnType) {
     return FunctionType::get(returnType, std::move(paramTypes), Mutability::Mutable, returnType.getLocation());
 }
 
-/// type ::= simple-type | 'const' simple-type | type '*' | type '?' | function-type | tuple-type
+/// type ::= simple-type | 'const' simple-type | type '&' | type '*' | type '?' | function-type | tuple-type
 Type Parser::parseType() {
     Type type;
     auto location = getCurrentLocation();
@@ -431,8 +427,12 @@ Type Parser::parseType() {
 
     while (true) {
         switch (currentToken()) {
-            case Token::Star:
+            case Token::Ref:
                 type = PointerType::get(type, Mutability::Mutable, getCurrentLocation());
+                consumeToken();
+                break;
+            case Token::Star:
+                type = ArrayType::get(type, ArrayType::unknownSize, type.getMutability(), getCurrentLocation());
                 consumeToken();
                 break;
             case Token::QuestionMark:
@@ -445,8 +445,6 @@ Type Parser::parseType() {
             case Token::LeftBracket:
                 type = ArrayType::get(type, parseArraySizeInBrackets(), type.getMutability(), getCurrentLocation());
                 break;
-            case Token::And:
-                ERROR(getCurrentLocation(), "Delta doesn't have C++-style references; use pointers ('*') instead, they are non-null by default");
             default:
                 return type.withLocation(location);
         }

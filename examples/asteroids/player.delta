@@ -20,7 +20,7 @@ struct Player {
         timeSinceLastMissileShot = 0;
     }
 
-    void render(SDL_Renderer* renderer) {
+    void render(SDL_Renderer& renderer) {
         var a = Vector2(position.x - playerSize, position.y - playerSize);
         var b = Vector2(position.x - playerSize, position.y + playerSize);
         var c = Vector2(position.x + playerSize + playerSize, position.y);
@@ -46,7 +46,7 @@ struct Player {
         }
     }
 
-    void update(float delta, GameState* state) {
+    void update(float delta, GameState& state) {
         if (isKeyDown(SDL_SCANCODE_RIGHT)) {
             direction += turningSpeed * delta;
         }

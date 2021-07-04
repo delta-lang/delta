@@ -1,7 +1,7 @@
-struct OrderedSetIterator<Element>: Copyable, Iterator<Element*> {
+struct OrderedSetIterator<Element>: Copyable, Iterator<Element&> {
     OrderedMapIterator<Element, bool> mapIter;
 
-    OrderedSetIterator(OrderedSet<Element>* set) {
+    OrderedSetIterator(OrderedSet<Element>& set) {
         this.mapIter = set.map.iterator();
     }
 
@@ -9,7 +9,7 @@ struct OrderedSetIterator<Element>: Copyable, Iterator<Element*> {
         return mapIter.hasValue();
     }
 
-    Element* value() {
+    Element& value() {
         return mapIter.value().key;
     }
 

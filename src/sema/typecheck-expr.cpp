@@ -166,7 +166,7 @@ Type Typechecker::typecheckUnaryExpr(UnaryExpr& expr) {
 
             ERROR(expr.getLocation(), "cannot dereference non-pointer type '" << operandType << "'");
 
-        case Token::And: // Address-of operation
+        case Token::Ref: // Address-of operation
             // Allow forming mutable pointers to constants. This is safe because constants will be inlined at the usage site.
             if (expr.isConstant()) {
                 operandType = operandType.withMutability(Mutability::Mutable);

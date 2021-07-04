@@ -1,6 +1,6 @@
 // RUN: check-snapshots -Wno-unused
 
-void foo(const int*? a, int* b) {
+void foo(const int&? a, int& b) {
     _ = a === b;
     _ = a !== b;
 }

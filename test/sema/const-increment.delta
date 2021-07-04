@@ -1,6 +1,6 @@
 // RUN: %not %delta -typecheck %s | %FileCheck %s
 
-extern const int* f();
+extern const int& f();
 
 void main() {
     var i = f();

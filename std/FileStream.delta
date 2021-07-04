@@ -1,5 +1,5 @@
 struct OutputFileStream {
-    FILE*? file;
+    FILE&? file;
 
     OutputFileStream(public int fileDescriptor) {
         file = fdopen(fileDescriptor, "w");
@@ -16,7 +16,7 @@ struct OutputFileStream {
         }
     }
 
-    void write<T: Printable>(T* value) {
+    void write<T: Printable>(T& value) {
         var s = value.toString();
         fprintf(file!, "%.*s", s.size(), s.data());
         fflush(file);

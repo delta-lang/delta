@@ -4,7 +4,7 @@ int g() {
     return 1
 }
 
-void f(int* a, int b) {
+void f(int& a, int b) {
     var m = g()
     *a = b
     var n = g()

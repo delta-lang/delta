@@ -12,12 +12,12 @@ struct Set<Key: Hashable> {
     }
 
     /// Removes an element from the set, if it exists there.
-    void remove(Key* key) {
+    void remove(Key& key) {
         map.remove(key);
     }
 
     /// Checks if e is part of the set.
-    bool contains(Key* key) {
+    bool contains(Key& key) {
         return map.contains(key);
     }
 

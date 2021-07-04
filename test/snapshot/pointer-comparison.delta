@@ -3,7 +3,7 @@
 struct X { int i; }
 struct Y { int i; }
 
-bool operator<(X* a, X* b) {
+bool operator<(X& a, X& b) {
     return true;
 }
 
@@ -11,15 +11,15 @@ interface Z {
     void z();
 }
 
-bool operator< <T: Z>(T* a, T* b) {
+bool operator< <T: Z>(T& a, T& b) {
     return true;
 }
 
-void fx(X* a, X* b) {
+void fx(X& a, X& b) {
     _ = a < b;
     _ = *a < *b;
 }
 
-void fy(Y* a, Y* b) {
+void fy(Y& a, Y& b) {
     _ = addressof(a) < addressof(b);
 }

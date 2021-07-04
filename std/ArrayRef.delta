@@ -1,5 +1,5 @@
 struct ArrayRef<Element>: Copyable {
-    Element[*] data;
+    ElementSUOJA data;
     int size;
 
     /// Initializes an ArrayRef referring to an empty array.
@@ -9,14 +9,14 @@ struct ArrayRef<Element>: Copyable {
     }
 
     /// Initializes an ArrayRef referring to the elements of the given List.
-    ArrayRef(List<Element>* list) {
+    ArrayRef(List<Element>& list) {
         data = list.data();
         size = list.size();
     }
 
     /// Initializes an ArrayRef referring to an array of the given size located at the given memory
     /// address.
-    ArrayRef(Element[*] data, int size) {
+    ArrayRef(ElementSUOJA data, int size) {
         this.data = data;
         this.size = size;
     }
@@ -31,18 +31,18 @@ struct ArrayRef<Element>: Copyable {
     }
 
     /// Returns the first element in the array.
-    Element* front() {
+    Element& front() {
         if (empty()) indexOutOfBounds("front", 0);
         return data[0];
     }
 
     /// Returns a reference to the element at the given index.
-    Element* operator[](int index) {
+    Element& operator[](int index) {
         if (index < 0 || index >= size()) indexOutOfBounds("operator[]", index);
         return data[index];
     }
 
-    Element[*] data() {
+    ElementSUOJA data() {
         return data;
     }
 
@@ -50,7 +50,7 @@ struct ArrayRef<Element>: Copyable {
         return ArrayIterator(this);
     }
 
-    Element*? find(bool(Element*) predicate) {
+    Element&? find(bool(Element&) predicate) {
         for (var element in this) {
             if (predicate(element)) {
                 return element;

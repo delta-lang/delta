@@ -1,6 +1,6 @@
 // RUN: check-snapshots
 
-extern char*[*]? b();
+extern char&SUOJA? b();
 
 void main() {
     var s = b();

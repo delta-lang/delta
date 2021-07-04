@@ -1,7 +1,7 @@
 // RUN: check-snapshots
 
 void main() {
-    void*[3] a = undefined;
-    int*[2] b = undefined;
-    float32**[1] c = undefined;
+    void&[3] a = undefined;
+    int&[2] b = undefined;
+    float32&&[1] c = undefined;
 }

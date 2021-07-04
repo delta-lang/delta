@@ -1,7 +1,7 @@
-struct SetIterator<Element>: Copyable, Iterator<Element*> {
+struct SetIterator<Element>: Copyable, Iterator<Element&> {
     MapIterator<Element, bool> iterator;
 
-    SetIterator(Set<Element>*  set) {
+    SetIterator(Set<Element>&  set) {
         iterator = MapIterator(set.map);
     }
 
@@ -9,7 +9,7 @@ struct SetIterator<Element>: Copyable, Iterator<Element*> {
         return iterator.hasValue();
     }
 
-    Element* value() {
+    Element& value() {
         return iterator.value().key;
     }
 

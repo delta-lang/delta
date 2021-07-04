@@ -1,7 +1,7 @@
 // RUN: check-snapshots
 
 struct X<T> {
-    Y<T>*? y;
+    Y<T>&? y;
 
     X() {
         y = null;

@@ -1,12 +1,12 @@
 // RUN: %delta -typecheck %s | %FileCheck %s
 
-int* f0() {
+int& f0() {
     var a = 3;
     // CHECK: [[@LINE+1]]:13: warning: returning pointer to local variable
     return &a;
 }
 
-int* f1() {
+int& f1() {
     var a = 3;
     // CHECK: [[@LINE+1]]:12: warning: returning pointer to local variable
     return a;
@@ -15,38 +15,38 @@ int* f1() {
 struct S: Copyable {
     int i;
 
-    int* f2() {
+    int& f2() {
         // CHECK-NOT: [[@LINE+1]]:17: warning: returning pointer to local variable
         return &i;
     }
 
-    int* f3() {
+    int& f3() {
         // CHECK-NOT: [[@LINE+1]]:16: warning: returning pointer to local variable
         return i;
     }
 }
 
-int* f4(int a) {
+int& f4(int a) {
     // CHECK: [[@LINE+1]]:13: warning: returning pointer to local variable
     return &a;
 }
 
-int* f5(int a) {
+int& f5(int a) {
     // CHECK: [[@LINE+1]]:12: warning: returning pointer to local variable
     return a;
 }
 
-int* f6(int* a) {
+int& f6(int& a) {
     // CHECK-NOT: [[@LINE+1]]:12: warning: returning pointer to local variable
     return a;
 }
 
-int** f7(int* a) {
+int&& f7(int& a) {
     // CHECK: [[@LINE+1]]:13: warning: returning pointer to local variable
     return &a;
 }
 
-int** f8(int* a) {
+int&& f8(int& a) {
     // CHECK: [[@LINE+1]]:12: warning: returning pointer to local variable
     return a;
 }

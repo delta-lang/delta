@@ -8,19 +8,18 @@ using namespace delta;
 
 void Typechecker::checkReturnPointerToLocal(const Expr* returnValue) const {
     if (auto* unaryExpr = llvm::dyn_cast<UnaryExpr>(returnValue)) {
-        if (unaryExpr->getOperator() == Token::And) {
+        if (unaryExpr->getOperator() == Token::Ref) {
             returnValue = &unaryExpr->getOperand();
         }
     }
 
-    Type localVariableType;
-    const Expr* operand = returnValue;
-
     if (auto implicitCastExpr = llvm::dyn_cast<ImplicitCastExpr>(returnValue)) {
-        operand = implicitCastExpr->getOperand();
+        returnValue = implicitCastExpr->getOperand();
     }
 
-    if (auto varExpr = llvm::dyn_cast<VarExpr>(operand)) {
+    Type localVariableType;
+
+    if (auto varExpr = llvm::dyn_cast<VarExpr>(returnValue)) {
         switch (varExpr->getDecl()->getKind()) {
             case DeclKind::VarDecl: {
                 auto* varDecl = llvm::cast<VarDecl>(varExpr->getDecl());

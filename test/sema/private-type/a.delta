@@ -4,16 +4,16 @@
 
 private struct A {}
 
-private void i(A* q) {
+private void i(A& q) {
     A a = undefined;
     a = A();
 }
 
 private void j(A a) {}
 
-private void k(A*? a) {}
+private void k(A&? a) {}
 
-private A*? l() {
+private A&? l() {
     return null;
 }
 
@@ -27,20 +27,20 @@ private struct D {
 }
 
 // CHECK-PRIVATE-IN-PUBLIC-DECL: a.delta:[[@LINE+1]]:8: warning: using private type 'A' in public declaration
-void m(A* r) {
+void m(A& r) {
     // CHECK-PRIVATE-IN-PUBLIC-DECL-NOT: a.delta:[[@LINE+1]]:{{[0-9]+}}: warning: using private type 'A' in public declaration
     A a = undefined;
     // CHECK-PRIVATE-IN-PUBLIC-DECL-NOT: a.delta:[[@LINE+1]]:{{[0-9]+}}: warning: using private type 'A' in public declaration
     a = A();
 }
 
-void o(A*? a) {} // TODO: Here should be a warning
+void o(A&? a) {} // TODO: Here should be a warning
 
-A*? p() { // TODO: Here should be a warning
+A&? p() { // TODO: Here should be a warning
     return null;
 }
 
 struct E {
     // CHECK-PRIVATE-IN-PUBLIC-DECL: a.delta:[[@LINE+1]]:5: warning: using private type 'A' in public declaration
-    A* a;
+    A& a;
 }

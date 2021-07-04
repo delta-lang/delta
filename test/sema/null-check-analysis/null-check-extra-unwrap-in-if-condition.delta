@@ -1,10 +1,10 @@
 // RUN: %delta -typecheck %s | %FileCheck %s
 
 struct S {
-    S*? a;
+    S&? a;
 }
 
-S*? foo(S* p) {
+S&? foo(S& p) {
     var n = p;
 
     while (n.a != null) {

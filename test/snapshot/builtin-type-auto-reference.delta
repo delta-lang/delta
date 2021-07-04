@@ -1,6 +1,6 @@
 // RUN: check-snapshots
 
-void foo(int* ref_i) { }
+void foo(int& ref_i) { }
 
 void main() {
     var bar = 42;

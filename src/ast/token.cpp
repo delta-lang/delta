@@ -106,7 +106,7 @@ bool delta::isUnaryOperator(Token::Kind tokenKind) {
         case Token::Plus:
         case Token::Minus:
         case Token::Star:
-        case Token::And:
+        case Token::Ref:
         case Token::Not:
         case Token::Tilde:
         case Token::Increment:

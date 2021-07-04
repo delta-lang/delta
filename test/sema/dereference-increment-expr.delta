@@ -1,6 +1,6 @@
 // RUN: %not %delta -typecheck %s | %FileCheck %s
 
-void f(int[*] p) {
+void f(intSUOJA p) {
     var a = p;
 
     // CHECK: [[@LINE+1]]:13: error: cannot dereference non-pointer type 'void'

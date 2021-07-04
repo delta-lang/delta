@@ -3,7 +3,7 @@
 struct X {}
 
 void f(X x) {
-    X*? p = null;
+    X&? p = null;
     p = x;
     p = x;
 }

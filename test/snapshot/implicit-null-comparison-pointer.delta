@@ -1,7 +1,7 @@
 // RUN: check-snapshots
 
 void main() {
-    bool*? foo = undefined;
+    bool&? foo = undefined;
     bool b = !foo;
     if (foo) {}
     while (foo) {}

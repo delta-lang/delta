@@ -1,6 +1,6 @@
 // RUN: %delta -typecheck %s -Wno-unused | %FileCheck %s
 
-void foo(int*? a, int*? b) {
+void foo(int&? a, int&? b) {
     var p = a;
     if (p != null) {
         var i = *p;

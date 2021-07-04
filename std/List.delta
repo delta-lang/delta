@@ -1,5 +1,5 @@
 struct List<Element> {
-    Element[*] buffer;
+    ElementSUOJA buffer;
     int size;
     int capacity;
 
@@ -59,7 +59,7 @@ struct List<Element> {
     }
 
     /// Returns the element at the given index.
-    Element* operator[](int index) {
+    Element& operator[](int index) {
         if (index >= size) {
             indexOutOfBounds(index);
         }
@@ -71,17 +71,17 @@ struct List<Element> {
         buffer[index] = element;
     }
 
-    Element* first() {
+    Element& first() {
         if (size == 0) abort("Called first() on empty List\n");
         return buffer[0];
     }
 
-    Element* last() {
+    Element& last() {
         if (size == 0) abort("Called last() on empty List\n");
         return buffer[size - 1];
     }
 
-    Element[*] data() {
+    ElementSUOJA data() {
         return buffer;
     }
 
@@ -124,7 +124,7 @@ struct List<Element> {
     }
 
     /// Removes the first element satisfying the given condition.
-    void removeFirst(bool(Element*) shouldRemove) {
+    void removeFirst(bool(Element&) shouldRemove) {
         for (var index in 0..size) {
             if (shouldRemove(this[index])) {
                 unsafeRemoveAt(index);
@@ -178,7 +178,7 @@ struct List<Element> {
         return EnumeratedIterator(iterator());
     }
 
-    Element*? find(bool(Element*) predicate) {
+    Element&? find(bool(Element&) predicate) {
         for (var element in this) {
             if (predicate(element)) {
                 return element;
@@ -188,7 +188,7 @@ struct List<Element> {
         return null;
     }
 
-    List<Output> map<Output>(Output(Element*) transform) {
+    List<Output> map<Output>(Output(Element&) transform) {
         var output = List<Output>(capacity: this.size);
 
         for (var element in this) {
@@ -198,7 +198,7 @@ struct List<Element> {
         return output;
     }
 
-    List<Element> filter(bool(Element*) include) {
+    List<Element> filter(bool(Element&) include) {
         var output = List<Element>();
 
         for (var element in this) {
@@ -223,6 +223,6 @@ struct List<Element> {
     }
 }
 
-bool operator==<T>(List<T>* a, List<T>* b) {
+bool operator==<T>(List<T>& a, List<T>& b) {
     return ArrayRef(a) == ArrayRef(b);
 }

@@ -4,16 +4,16 @@ struct A {
     ~A() {}
 }
 
-void f(A* a) {
+void f(A& a) {
     a.deinit();
 }
 
 struct B {}
 
-void g(B* b) {
+void g(B& b) {
     b.deinit();
 }
 
-void h(char* c) {
+void h(char& c) {
     c.deinit();
 }

@@ -36,11 +36,11 @@ struct B : O {
 //O o = t;
 //foo(o);
 //
-//void foo(O* o) {
+//void foo(O& o) {
 //    *o = P();
 //}
 //
-//void foo<T: O>(T* o) {
+//void foo<T: O>(T& o) {
 //    *o = P();
 //}
 //

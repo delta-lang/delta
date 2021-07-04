@@ -1,6 +1,6 @@
 // RUN: %delta -typecheck -Werror -Wno-unused %s
 
-void foo(int*? p) {
+void foo(int&? p) {
     if (p) {
         var i = *p;
         *p = 42;

@@ -7,6 +7,6 @@ struct Foo {
 
 void main() {
     Foo f = undefined;
-    Foo* rf = f;
+    Foo& rf = f;
     rf.bar();
 }

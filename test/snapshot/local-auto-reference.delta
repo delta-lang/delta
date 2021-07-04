@@ -3,6 +3,6 @@
 struct Foo { int i; }
 void main() {
     Foo f = undefined;
-    Foo* rf = f;
-    Foo* pf = f;
+    Foo& rf = f;
+    Foo& pf = f;
 }

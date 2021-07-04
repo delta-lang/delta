@@ -1,6 +1,6 @@
 // RUN: %not %delta -typecheck %s | %FileCheck %s
 
 void main() {
-    // CHECK: [[@LINE+1]]:13: error: illegal cast from 'bool' to 'int**'
-    var i = cast<int**>(false);
+    // CHECK: [[@LINE+1]]:13: error: illegal cast from 'bool' to 'int&&'
+    var i = cast<int&&>(false);
 }

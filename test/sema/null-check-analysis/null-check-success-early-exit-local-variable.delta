@@ -1,7 +1,7 @@
 // RUN: %delta -typecheck %s | %FileCheck %s
 
-void foo(int*? a) {
-    int*? p = a;
+void foo(int&? a) {
+    int&? p = a;
 
     if (p == null) {
         return;

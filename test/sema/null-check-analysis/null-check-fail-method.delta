@@ -4,7 +4,7 @@ struct S {
     void f() {}
 }
 
-void foo(S*? a) {
+void foo(S&? a) {
     var p = a;
 
     // CHECK: [[@LINE+1]]:13: warning: receiver may be null; unwrap it with a postfix '!' to silence this warning

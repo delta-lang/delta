@@ -10,9 +10,9 @@ struct B {
     B() {}
 }
 
-void f(A* a) {}
-void f(B* b) {}
-void f(int* i) {}
+void f(A& a) {}
+void f(B& b) {}
+void f(int& i) {}
 
 void main() {
     A a = undefined;

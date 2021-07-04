@@ -1,18 +1,18 @@
 // RUN: check-snapshots
 
 void main() {
-    int* p = undefined;
-    const int* cp = undefined;
-    void* v = p;
+    int& p = undefined;
+    const int& cp = undefined;
+    void& v = p;
     bar(p);
     bar(v);
-    var b = cast<int8*>(v);
+    var b = cast<int8&>(v);
     v = b;
     baz(cp);
     var i = 0;
     baz(&i);
 }
 
-void bar(void* p) {}
+void bar(void& p) {}
 
-void baz(void*? p) {}
+void baz(void&? p) {}

@@ -1,6 +1,6 @@
 // RUN: check-snapshots -Wno-unused
 
-void f(int* a) {
+void f(int& a) {
     var p = a;
     p++;
     a--;

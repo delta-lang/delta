@@ -4,7 +4,7 @@ struct S {
     void f() {}
 }
 
-void foo(S*? a) {
+void foo(S&? a) {
     var p = a;
     if (p != null) {
         p.f();

@@ -6,4 +6,4 @@ void f(S s) {
     g(s);
 }
 
-void g(S* s) {}
+void g(S& s) {}

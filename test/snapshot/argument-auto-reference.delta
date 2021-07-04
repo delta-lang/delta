@@ -1,7 +1,7 @@
 // RUN: check-snapshots
 
 struct Foo { int i; }
-void ptr(Foo* p) { }
+void ptr(Foo& p) { }
 void main() {
     Foo f = undefined;
     ptr(f);

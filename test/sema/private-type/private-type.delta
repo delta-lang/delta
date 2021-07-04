@@ -15,9 +15,9 @@ void f(A a) {}
 
 // TODO: This warning should be at column 8
 // CHECK: [[@LINE+1]]:9: warning: 'A' is private
-void g(A*? a) {}
+void g(A&? a) {}
 
-A*? h() { // TODO: Here should be a warning
+A&? h() { // TODO: Here should be a warning
     return null;
 }
 

@@ -28,24 +28,24 @@ const uint64 uint64_min = 0;
 
 // TODO: Improve print() implementations: optimize + don't depend on libc + don't assume size of int.
 
-private void printSigned<T>(T value, StringBuffer* stream) {
+private void printSigned<T>(T value, StringBuffer& stream) {
     char[22] result = undefined;
     sprintf(result, "%lld", value);
     stream.write(string(result));
 }
 
-private void printUnsigned<T>(T value, StringBuffer* stream) {
+private void printUnsigned<T>(T value, StringBuffer& stream) {
     char[22] result = undefined;
     sprintf(result, "%llu", value);
     stream.write(string(result));
 }
 
 struct int: Copyable, Comparable, Printable, Hashable {
-    Ordering compare(int* other) {
+    Ordering compare(int& other) {
         return this < other ? Ordering.Less : this > other ? Ordering.Greater : Ordering.Equal;
     }
 
-    void print(StringBuffer* stream) {
+    void print(StringBuffer& stream) {
         printSigned(this, stream);
     }
 
@@ -55,11 +55,11 @@ struct int: Copyable, Comparable, Printable, Hashable {
 }
 
 struct int8: Copyable, Comparable, Printable, Hashable {
-    Ordering compare(int8* other) {
+    Ordering compare(int8& other) {
         return this < other ? Ordering.Less : this > other ? Ordering.Greater : Ordering.Equal;
     }
 
-    void print(StringBuffer* stream) {
+    void print(StringBuffer& stream) {
         printSigned(this, stream);
     }
 
@@ -69,11 +69,11 @@ struct int8: Copyable, Comparable, Printable, Hashable {
 }
 
 struct int16: Copyable, Comparable, Printable, Hashable {
-    Ordering compare(int16* other) {
+    Ordering compare(int16& other) {
         return this < other ? Ordering.Less : this > other ? Ordering.Greater : Ordering.Equal;
     }
 
-    void print(StringBuffer* stream) {
+    void print(StringBuffer& stream) {
         printSigned(this, stream);
     }
 
@@ -83,11 +83,11 @@ struct int16: Copyable, Comparable, Printable, Hashable {
 }
 
 struct int32: Copyable, Comparable, Printable, Hashable {
-    Ordering compare(int32* other) {
+    Ordering compare(int32& other) {
         return this < other ? Ordering.Less : this > other ? Ordering.Greater : Ordering.Equal;
     }
 
-    void print(StringBuffer* stream) {
+    void print(StringBuffer& stream) {
         printSigned(this, stream);
     }
 
@@ -97,11 +97,11 @@ struct int32: Copyable, Comparable, Printable, Hashable {
 }
 
 struct int64: Copyable, Comparable, Printable, Hashable {
-    Ordering compare(int64* other) {
+    Ordering compare(int64& other) {
         return this < other ? Ordering.Less : this > other ? Ordering.Greater : Ordering.Equal;
     }
 
-    void print(StringBuffer* stream) {
+    void print(StringBuffer& stream) {
         printSigned(this, stream);
     }
 
@@ -111,11 +111,11 @@ struct int64: Copyable, Comparable, Printable, Hashable {
 }
 
 struct uint: Copyable, Comparable, Printable, Hashable {
-    Ordering compare(uint* other) {
+    Ordering compare(uint& other) {
         return this < other ? Ordering.Less : this > other ? Ordering.Greater : Ordering.Equal;
     }
 
-    void print(StringBuffer* stream) {
+    void print(StringBuffer& stream) {
         printUnsigned(this, stream);
     }
 
@@ -125,11 +125,11 @@ struct uint: Copyable, Comparable, Printable, Hashable {
 }
 
 struct uint8: Copyable, Comparable, Printable, Hashable {
-    Ordering compare(uint8* other) {
+    Ordering compare(uint8& other) {
         return this < other ? Ordering.Less : this > other ? Ordering.Greater : Ordering.Equal;
     }
 
-    void print(StringBuffer* stream) {
+    void print(StringBuffer& stream) {
         printUnsigned(this, stream);
     }
 
@@ -139,11 +139,11 @@ struct uint8: Copyable, Comparable, Printable, Hashable {
 }
 
 struct uint16: Copyable, Comparable, Printable, Hashable {
-    Ordering compare(uint16* other) {
+    Ordering compare(uint16& other) {
         return this < other ? Ordering.Less : this > other ? Ordering.Greater : Ordering.Equal;
     }
 
-    void print(StringBuffer* stream) {
+    void print(StringBuffer& stream) {
         printUnsigned(this, stream);
     }
 
@@ -153,11 +153,11 @@ struct uint16: Copyable, Comparable, Printable, Hashable {
 }
 
 struct uint32: Copyable, Comparable, Printable, Hashable {
-    Ordering compare(uint32* other) {
+    Ordering compare(uint32& other) {
         return this < other ? Ordering.Less : this > other ? Ordering.Greater : Ordering.Equal;
     }
 
-    void print(StringBuffer* stream) {
+    void print(StringBuffer& stream) {
         printUnsigned(this, stream);
     }
 
@@ -167,11 +167,11 @@ struct uint32: Copyable, Comparable, Printable, Hashable {
 }
 
 struct uint64: Copyable, Comparable, Printable, Hashable {
-    Ordering compare(uint64* other) {
+    Ordering compare(uint64& other) {
         return this < other ? Ordering.Less : this > other ? Ordering.Greater : Ordering.Equal;
     }
 
-    void print(StringBuffer* stream) {
+    void print(StringBuffer& stream) {
         printUnsigned(this, stream);
     }
 

@@ -1,7 +1,7 @@
 // RUN: check-snapshots
 
 struct S<T> {
-    T*? e;
+    T&? e;
 }
 
 enum E {

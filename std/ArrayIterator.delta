@@ -1,6 +1,6 @@
-struct ArrayIterator<Element>: Copyable, Iterator<Element*> {
-    Element[*] current;
-    Element[*] end;
+struct ArrayIterator<Element>: Copyable, Iterator<Element&> {
+    ElementSUOJA current;
+    ElementSUOJA end;
 
     ArrayIterator(Element[] array) {
         current = array.data();
@@ -17,7 +17,7 @@ struct ArrayIterator<Element>: Copyable, Iterator<Element*> {
         return current !== end;
     }
 
-    Element* value() {
+    Element& value() {
         return current;
     }
 

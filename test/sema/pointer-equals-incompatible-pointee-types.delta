@@ -1,6 +1,6 @@
 // RUN: %not %delta -typecheck %s | %FileCheck %s
 
-void f(int* a, uint* b) {
-	// CHECK: [[@LINE+1]]:8: error: comparison of distinct pointer types ('int*' and 'uint*')
+void f(int& a, uint& b) {
+	// CHECK: [[@LINE+1]]:8: error: comparison of distinct pointer types ('int&' and 'uint&')
 	_ = a === b;
 }

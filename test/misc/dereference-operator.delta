@@ -1,9 +1,9 @@
 // RUN: check_exit_status 42 %delta run %s
 
-extern void* calloc(uint64 count, uint64 size);
+extern void& calloc(uint64 count, uint64 size);
 
 int main() {
-    var buffer = cast<int*>(calloc(1, 8));
+    var buffer = cast<int&>(calloc(1, 8));
     *buffer = 41;
     (*buffer)++;
     return *buffer;

@@ -1,7 +1,7 @@
 // RUN: check-snapshots -Wno-unused
 
-void foo(char** p, char* x) {
-    char** pp = undefined;
+void foo(char&& p, char& x) {
+    char&& pp = undefined;
     (&pp).init(p);
     pp.init(x);
     (*pp).init('x');

@@ -6,7 +6,7 @@ interface I {
     void foo();
 }
 
-void operator==<T: I>(T* a, T* b) {}
+void operator==<T: I>(T& a, T& b) {}
 
 void operator==(S a, S b) {}
 

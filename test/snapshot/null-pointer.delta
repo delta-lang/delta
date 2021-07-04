@@ -1,10 +1,10 @@
 // RUN: check-snapshots
 
-int*? foo() { return null; }
+int&? foo() { return null; }
 
 void main() {
     var isNull = foo() == null;
     var isNonNull = foo() != null;
     var ptr = foo();
-    bool*? ptr2 = null;
+    bool&? ptr2 = null;
 }

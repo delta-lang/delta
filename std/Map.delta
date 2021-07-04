@@ -42,7 +42,7 @@ struct Map<Key: Hashable, Value> {
     }
 
     /// Removes an element from the map, if it exists there.
-    void remove(Key* e) {
+    void remove(Key& e) {
         var hashValue = convertHash(e.hash()) % capacity();
         var slot = hashTable[hashValue];
 
@@ -60,7 +60,7 @@ struct Map<Key: Hashable, Value> {
     }
 
     /// Expands the hash table size, needed when there's too many elements in the map
-    void increaseTableSize(List<List<MapEntry<Key, Value>>>* newTable, int newCapacity) {
+    void increaseTableSize(List<List<MapEntry<Key, Value>>>& newTable, int newCapacity) {
         for (var i in 0..newCapacity) {
             newTable.push(List<MapEntry<Key, Value>>());
         }
@@ -92,7 +92,7 @@ struct Map<Key: Hashable, Value> {
         hashTable = newTable;
     }
 
-    Value*? operator[](Key* e) {
+    Value&? operator[](Key& e) {
         var hashValue = convertHash(e.hash()) % capacity();
         var slot = hashTable[hashValue];
 
@@ -106,7 +106,7 @@ struct Map<Key: Hashable, Value> {
     }
 
     /// Checks if e is part of the map.
-    bool contains(Key* e) {
+    bool contains(Key& e) {
         var hashValue = convertHash(e.hash()) % capacity();
         var slot = hashTable[hashValue];
 

@@ -4,13 +4,13 @@ struct Foo {
     int i;
 }
 
-void get(Foo* f) {
+void get(Foo& f) {
     var m = f.i;
 }
 
 void main() {
     Foo f = undefined;
-    Foo* rf = f;
+    Foo& rf = f;
     var n = rf.i;
     get(rf);
 }

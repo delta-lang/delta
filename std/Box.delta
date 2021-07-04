@@ -1,11 +1,11 @@
 struct Box<T> {
-    T* pointer;
+    T& pointer;
 
     Box(T value) {
         this.pointer = allocate(value);
     }
 
-//    Box(T* pointer) {
+//    Box(T& pointer) {
 //        this.pointer = pointer;
 //    }
 
@@ -13,7 +13,7 @@ struct Box<T> {
         deallocate(pointer);
     }
 
-    T* get() {
+    T& get() {
         return pointer;
     }
 }
